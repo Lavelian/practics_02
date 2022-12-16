@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const contactsRouter = require("./contactsRouter");
-const notesRoute = require("./notesRoute");
+const { contactsRouter } = require("./routes");
+const { notesRoute } = require("./routes");
 
 require("dotenv").config();
 const { DB_HOST } = process.env;
