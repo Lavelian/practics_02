@@ -2,6 +2,7 @@ const {
   getAll,
   createContact,
   removeContact,
+  getByQuery,
 } = require("./contacts");
 
 const {
@@ -14,6 +15,7 @@ module.exports = {
   getAll,
   createContact,
   removeContact,
+  getByQuery,
   getAllNote,
   createNote,
   removeNote,
