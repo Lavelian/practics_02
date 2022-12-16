@@ -2,10 +2,24 @@ const { text } = require("express");
 const Contact = require("../model/contact");
 
 const getAll = async (req, res) => {
-  // await Contact.
-  await Contact.ensureIndexes({ name: text });
-  const result = await Contact.find().populate("notes");
+  // await Contact.ensureIndexes({ name: "text" });
+  // const result = await Contact
+  //   .find()
+  //   .populate("notes")
+  //   .sort({ age: 1 });
 
+  const result = await Contact.aggregate([
+    {
+      $match: {
+        name: { $regex: "Иван" },
+      },
+    },
+    {
+      $sort: {
+        age: -1,
+      },
+    },
+  ]);
   res.send(result);
 };
 
@@ -14,6 +28,7 @@ const getByQuery = async (req, res) => {
     // name: req.params.query,
     // $text: { $search: req.params.query },
     name: { $regex: req.params.query },
+    // son: { $regex: req.params.query },
   });
   res.send(result);
 };
