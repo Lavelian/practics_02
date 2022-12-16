@@ -1,4 +1,4 @@
-const { text } = require("express");
+// const { text } = require("express");
 const Contact = require("../model/contact");
 
 const getAll = async (req, res) => {
