@@ -3,7 +3,7 @@ const Contact = require("../model/contact");
 
 const getAll = async (req, res) => {
   // await Contact.
-  await Contact.ensureIndexes({ name: "text" });
+  await Contact.ensureIndexes({ name: text });
   const result = await Contact.find().populate("notes");
 
   res.send(result);
@@ -12,8 +12,8 @@ const getAll = async (req, res) => {
 const getByQuery = async (req, res) => {
   const result = await Contact.find({
     // name: req.params.query,
-    $text: { $search: req.params.query },
-    // name: { $regex: req.params.query },
+    // $text: { $search: req.params.query },
+    name: { $regex: req.params.query },
   });
   res.send(result);
 };
